@@ -1,13 +1,16 @@
 let http = require('http')
 let fs = require('fs')
+let port = process.env.PORT || 3000;
 
 http.createServer((req, res) => {
-  let json_obj = {
-    firstName: 'Tyler',
-    lastName: 'Carolan',
-    email: ['wearesokcaf@gmail.com']
+  let server_details = {
+    domain: 'https://gitjson.com',
+    repository: 'https://github.com/sokcaf/gitjson.git',
+    email: ['wearesokcaf@gmail.com', 'ty@kcborn.com']
   }
 
-  res.end(JSON.stringify(json_obj))
-}).listen(1337, '127.0.0.1')
+  res.end(JSON.stringify(server_details))
+}).listen(port, '127.0.0.1', () => {
+  console.log(`Server started on port: ${port}`)
+})
 
